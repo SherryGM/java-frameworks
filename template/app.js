@@ -3,7 +3,10 @@
 
 angular.module('bourbon', [
   'ngRoute',
+  'ui.bootstrap',
+  'ngAnimate',
   'bourbon.store'
+
 ])
 
   .config(['$routeProvider', function ($routeProvider) {

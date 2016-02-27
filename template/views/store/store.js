@@ -1,6 +1,6 @@
 /*global window, angular, console, alert, $*/
 
-angular.module('bourbon.store', ['ngRoute'])
+angular.module('bourbon.store', ['ngRoute', 'ui.bootstrap'])
 
   .config(['$routeProvider', function($routeProvider) {
     $routeProvider.when('/store', {
@@ -9,10 +9,10 @@ angular.module('bourbon.store', ['ngRoute'])
     });
   }])
 
-  .controller('storeCtrl', function ($scope) {
+  .controller('storeCtrl', function ($scope, $http) {
   
-  $scope.test = {
-    hello: "hello WOrld!"
-  };
+  $http.get('../../bourbon.json').success(function (data){
+    $scope.bottles = data;
+  });
   
   });

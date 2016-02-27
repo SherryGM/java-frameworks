@@ -1,3 +1,18 @@
-<h1> Hello World! </h1>
+<h1>Bourbon Store</h1>
 
-<h2>{{test.hello}}</h2>
+  <div class="col-sm-4 bottle" ng-repeat="bottle in bottles">
+    <div class="group">
+      <div class="group">
+        <img class="col-sm-6" src="../../img/{{bottle.shortname}}.png">
+        <div class="col-sm-6">
+          <h2>{{bottle.name}}</h2>
+          <button class="description" ng-click="open(bottle)">Description</button>
+          <p>Price: ${{bottle.price}}</p>
+        </div>
+      </div>
+      <button class="btn" ng-click="add(bottle.id)">Add to Cart</button>
+    </div>
+  </div>
+  
+</div>
+
