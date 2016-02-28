@@ -20,22 +20,35 @@ h1, h2{
   font-family: 'Forum', cursive;
 }
 
+i {
+  margin-right: 3px;
+}
+
+.items {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: stretch;
+}
+
 .bottle {
+  position: relative;
   margin-bottom: 20px;
-  div:first-child {
-    border: solid 1px lighten(@gray, 50%);
-    border-radius: 4px;
-    padding: 5px;
-    div {
-      border: none;
-      padding: 0;
-    }
+  width: 33%;
+  border: solid 1px lighten(@gray, 50%);
+  border-radius: 4px;
+  padding: 5px 5px 30px;
+  img {
+    width: 33%;
+    float: left;
   }
-  button {
+  div {
+    width: 66%;
     float: right;
   }
   h2 {
-    font-size: 1.5em;
+    font-size: 1.25em;
     margin-top: 0;
     border-bottom: solid 1px @orange;
     color: @gray;
@@ -43,19 +56,40 @@ h1, h2{
   button.description {
     border: none;
     background: none;
-    display: bock;
+    display: block;
     text-align: left;
+    padding-left: 0;
+    color: darken(@orange, 21%);
+    &:hover, &:focus, &:active {
+      text-decoration: underline;
+      border: none;
+    }
   }
   button.btn {
     background: lighten(@orange, 10%);
     color: darken(@gray, 10%);
     font-weight: bold;
-    display: block;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin: 5px;
+    &:hover, &:focus, &:active {
+      background: lighten(@orange, 20%);
+    }
   }
 }
 
 img.img-thumbnail {
   max-width: 200px;
 }
+
+@media only screen and (max-width: 360px) {
+  .bottle {
+    width: 100%;
+  }
+}
+
+/*768*/
+
 
 
