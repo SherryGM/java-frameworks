@@ -18,6 +18,7 @@ angular.module('bourbon.store', ['ngRoute', 'ui.bootstrap'])
     // Modal
   
     $scope.open = function (size, bottle) {
+      console.log('This button works');
       var modalInstance = $uibModal.open({
         animation: $scope.animationsEnabled,
         templateUrl: 'description',
@@ -37,5 +38,9 @@ angular.module('bourbon.store', ['ngRoute', 'ui.bootstrap'])
 .controller('modalInstanceCtrl', function($scope, $uibModalInstance, bottle) {
   
   $scope.bottle = bottle;
+
+  $scope.close = function () {
+    $uibModalInstance.close();
+  };
   
 });
