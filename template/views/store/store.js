@@ -14,6 +14,10 @@ angular.module('bourbon.store', ['ngRoute', 'ui.bootstrap'])
     $http.get('../../bourbon.json').success(function (data){
       $scope.bottles = data;
     });
+
+    $scope.add = function() {
+      location.href = '#/cart'
+    };
   
     // Modal
   

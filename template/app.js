@@ -5,7 +5,8 @@ angular.module('bourbon', [
   'ngRoute',
   'ui.bootstrap',
   'ngAnimate',
-  'bourbon.store'
+  'bourbon.store',
+  'bourbon.cart'
 
 ])
 

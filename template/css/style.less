@@ -24,6 +24,16 @@ i {
   margin-right: 3px;
 }
 
+.has-error {
+  color: red;
+  input {
+    border-color: red;
+  }
+}
+.text-error {
+  color: red;
+}
+
 .cart {
   text-align: right;
 }
@@ -91,6 +101,26 @@ img.img-thumbnail {
   max-width: 200px;
 }
 
+.items.list .bottle {
+  padding-bottom: 5px;
+  width: 100%;
+  img { width: 15%; }
+  div { 
+    width: 42%;
+    float: left;}
+  div:last-child {
+    width: 42%;
+    padding: 20px 10px 5px 0;
+    position: absolute;
+    text-align: right;
+    bottom: 0;
+    right: 0;
+  }
+  .description { margin-top: 10px; }
+}
+
+label {font-weight: normal; }
+
 // modal css
 
 .modal-header {
@@ -110,6 +140,10 @@ img.img-thumbnail {
   text-align: right;
 }
 
+.checkout {
+  text-align: right;
+  margin-bottom: 20px;
+}
 
 @media only screen and (max-width: 480px) {
   .bottle {
@@ -144,6 +178,24 @@ img.img-thumbnail {
     }
   }
   h1{ margin-top: 40px; }
+  .items.list .bottle {
+    width: 100%;
+    img { width: 20%; }
+    div { 
+      width: 80%;
+      float: none;
+      margin-left: 20%;}
+    div:last-child {
+      width: 100%;
+      padding: 5px 0 0;
+      margin: 10px 0 0;
+      position: relative;
+      bottom: 0;
+      right: 0;
+      border-top: solid 1px lighten(@gray, 50%);
+    }
+  }
+
 }
 
 @media only screen and (min-width: 980px) {

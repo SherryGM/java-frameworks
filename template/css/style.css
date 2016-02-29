@@ -17,6 +17,15 @@ h2 {
 i {
   margin-right: 3px;
 }
+.has-error {
+  color: red;
+}
+.has-error input {
+  border-color: red;
+}
+.text-error {
+  color: red;
+}
 .cart {
   text-align: right;
 }
@@ -82,6 +91,31 @@ button.description:active {
 img.img-thumbnail {
   max-width: 200px;
 }
+.items.list .bottle {
+  padding-bottom: 5px;
+  width: 100%;
+}
+.items.list .bottle img {
+  width: 15%;
+}
+.items.list .bottle div {
+  width: 42%;
+  float: left;
+}
+.items.list .bottle div:last-child {
+  width: 42%;
+  padding: 20px 10px 5px 0;
+  position: absolute;
+  text-align: right;
+  bottom: 0;
+  right: 0;
+}
+.items.list .bottle .description {
+  margin-top: 10px;
+}
+label {
+  font-weight: normal;
+}
 .modal-header {
   background: #eeb174;
   border-radius: 4px 4px 0 0 ;
@@ -101,6 +135,10 @@ img.img-thumbnail {
 .mobile-links {
   display: none;
   text-align: right;
+}
+.checkout {
+  text-align: right;
+  margin-bottom: 20px;
 }
 @media only screen and (max-width: 480px) {
   .bottle {
@@ -137,6 +175,26 @@ img.img-thumbnail {
   }
   h1 {
     margin-top: 40px;
+  }
+  .items.list .bottle {
+    width: 100%;
+  }
+  .items.list .bottle img {
+    width: 20%;
+  }
+  .items.list .bottle div {
+    width: 80%;
+    float: none;
+    margin-left: 20%;
+  }
+  .items.list .bottle div:last-child {
+    width: 100%;
+    padding: 5px 0 0;
+    margin: 10px 0 0;
+    position: relative;
+    bottom: 0;
+    right: 0;
+    border-top: solid 1px #dbdbdb;
   }
 }
 @media only screen and (min-width: 980px) {
