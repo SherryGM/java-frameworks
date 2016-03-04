@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.michaeldowden.jwf.model.CartItem;
 import com.michaeldowden.jwf.model.ShoppingCart;
+import com.michaeldowden.jwf.web.ResourceNotFoundException;
 
 @Service
 @Scope(proxyMode = TARGET_CLASS, value = "session")
@@ -25,14 +26,14 @@ public class CartService {
 		shoppingCart.setTotal(total);
 	}
 
-	private Integer findItemInCart(Integer itemId) {
+	private int findItemInCart(Integer itemId) {
 		for (int i = 0; i < shoppingCart.getItems().size(); i++) {
 			CartItem item = shoppingCart.getItems().get(i);
 			if (item.getId() == itemId) {
 				return i;
 			}
 		}
-		return null;
+		return -1;
 	}
 
 	public ShoppingCart fetchCart() {
@@ -41,8 +42,8 @@ public class CartService {
 	}
 
 	public void addToCart(CartItem newItem) {
-		Integer i = findItemInCart(newItem.getId());
-		if (i == null) {
+		int i = findItemInCart(newItem.getId());
+		if (i < 0) {
 			// Add a new item to the cart
 			shoppingCart.getItems().add(newItem);
 		} else {
@@ -53,21 +54,21 @@ public class CartService {
 	}
 
 	public void updateQuantity(Integer itemId, Integer qty) {
-		Integer i = findItemInCart(itemId);
-		if (i != null) {
+		int i = findItemInCart(itemId);
+		if (i < 0) {
+			throw new ResourceNotFoundException("Item doesn't exist in Shopping Cart");
+		} else {
 			CartItem cartItem = shoppingCart.getItems().get(i);
 			cartItem.setQty(qty);
-		} else {
-			throw new IllegalArgumentException("Item doesn't exist in Shopping Cart");
 		}
 	}
 
 	public void removeFromCart(Integer itemId) {
-		Integer i = findItemInCart(itemId);
-		if (i != null) {
-			shoppingCart.getItems().remove(i);
+		int i = findItemInCart(itemId);
+		if (i < 0) {
+			throw new ResourceNotFoundException("Item doesn't exist in Shopping Cart");
 		} else {
-			throw new IllegalArgumentException("Item doesn't exist in Shopping Cart");
+			shoppingCart.getItems().remove(i);
 		}
 	}
 }

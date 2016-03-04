@@ -48,5 +48,25 @@ expected='{"items":[{"id":1,"qty":5,"price":1399.95},{"id":2,"qty":1,"price":49.
 result=`curl -s -b cjar -X GET http://localhost:8080/svc/cart`
 printResult
 
+echo -n "Updating qty on item 3 (doesn't exist)..."
+expected=404
+result=`curl -s -i -b cjar -X POST -d qty=5 http://localhost:8080/svc/cart/3 | head -n 1 | cut -d$' ' -f2`
+printResult
+
+echo -n "Deleting item 3 (doesn't exist)..."
+expected=404
+result=`curl -s -i -b cjar -X DELETE http://localhost:8080/svc/cart/3 | head -n 1 | cut -d$' ' -f2`
+printResult
+
+echo -n "Deleting item 1..."
+expected=200
+result=`curl -s -i -b cjar -X DELETE http://localhost:8080/svc/cart/1 | head -n 1 | cut -d$' ' -f2`
+printResult
+
+echo -n "Fetching cart..."
+expected='{"items":[{"id":2,"qty":1,"price":49.99}],"address":null,"total":49.99}'
+result=`curl -s -b cjar -X GET http://localhost:8080/svc/cart`
+printResult
+
 # Remove Session File
 rm cjar
