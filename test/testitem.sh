@@ -7,19 +7,19 @@ endColor='\e[0m'
 
 # Setup Functions
 function printResult {
-	if [ $result == $expected ]
+	if [ "$result" == "$expected" ]
 	then
 		echo -e "${colorGreen}OK${endColor}"
 	else
 		echo -e "${colorRed}ERROR${endColor}"
-		echo -e "\tFound: ${result}"
+		echo -e "\tFound   : ${result}"
 		echo -e "\tExpected: ${expected}"
 	fi	
 }
 
-echo -n "Creating session and fetching items..."
+echo -n "Fetching items..."
 expected='200'
-result=`curl -s -i -X GET http://localhost:8080/svc/items | head -n 1 | cut -d$' ' -f2`
+result=`curl -s -i -X GET http://localhost:8080/svc/items | tac | tac | head -n 1 | cut -d$' ' -f2`
 printResult
 
 echo -n "Fetching Eagle Rare..."

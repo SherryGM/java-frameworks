@@ -18,7 +18,7 @@ public class ItemController {
 
 	@RequestMapping("/svc/items")
 	public List<Bourbon> listItems() {
-		return itemDao.allBourbon();
+		return itemDao.listItems();
 	}
 
 	@RequestMapping("/svc/item/{shortname}")

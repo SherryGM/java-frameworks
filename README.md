@@ -82,7 +82,7 @@ This project exists to compare service-layer implementations between Java framew
   city: "Springfield",
   state: "TN",
   zip: "12345",
-  phone: "123-456-789",
+  phone: "123-456-7890",
   email: "xyz@null.org"
 }
 ```
@@ -98,7 +98,7 @@ This project exists to compare service-layer implementations between Java framew
   city: "Springfield",
   state: "TN",
   zip: "12345",
-  phone: "123-456-789",
+  phone: "123-456-7890",
   email: "xyz@null.org"
 }
 ```
@@ -122,7 +122,7 @@ This project exists to compare service-layer implementations between Java framew
     city: "Springfield",
     state: "TN",
     zip: "12345",
-    phone: "123-456-789",
+    phone: "123-456-7890",
     email: "xyz@null.org"
   },
   items: [

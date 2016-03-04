@@ -22,7 +22,7 @@ public class ItemDao {
 	@Autowired
 	private NamedParameterJdbcTemplate jdbc;
 
-	public List<Bourbon> allBourbon() {
+	public List<Bourbon> listItems() {
 		final String sql = "SELECT * FROM store.items";
 		return jdbc.query(sql, emptyMap(), new BourbonMapper());
 	}

@@ -26,7 +26,7 @@ public class CartController {
 	CartService cartSvc;
 
 	@RequestMapping("/svc/cart")
-	public ShoppingCart shoppingCart() {
+	public ShoppingCart fetchCart() {
 		return cartSvc.fetchCart();
 	}
 

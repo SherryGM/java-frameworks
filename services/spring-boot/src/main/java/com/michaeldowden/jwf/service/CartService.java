@@ -18,7 +18,7 @@ public class CartService {
 	private ShoppingCart shoppingCart = new ShoppingCart();
 
 	private void calculateTotal() {
-		BigDecimal total = new BigDecimal(0.0);
+		BigDecimal total = BigDecimal.valueOf(0.0);
 		for (OrderItem item : shoppingCart.getItems()) {
 			BigDecimal subtotal = item.getPrice().multiply(valueOf(item.getQty()));
 			total = total.add(subtotal);
