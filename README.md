@@ -23,7 +23,7 @@ This project exists to compare service-layer implementations between Java framew
 ```
 
 ### View Item
-* `GET /svc/product/{shortname}`
+* `GET /svc/item/{shortname}`
 * 200: Success
 * 404: No such item
 * Response Body:
@@ -72,7 +72,7 @@ This project exists to compare service-layer implementations between Java framew
 * 404: No such item in cart
 
 ### Save Shipping Info
-* `PUT /svc/cart/shipping`
+* `PUT /svc/order/shipping`
 * 200: Success
 * Request Body:
 ```json
@@ -81,14 +81,14 @@ This project exists to compare service-layer implementations between Java framew
   address: "123 Nowhere Ln",
   city: "Springfield",
   state: "TN",
-  zip: 12345,
-  phone: 123456789,
+  zip: "12345",
+  phone: "123-456-789",
   email: "xyz@null.org"
 }
 ```
 
 ### Fetch Shipping Info
-* `GET /svc/cart/shipping`
+* `GET /svc/order/shipping`
 * 200: Success
 * Response Body:
 ```json
@@ -97,14 +97,14 @@ This project exists to compare service-layer implementations between Java framew
   address: "123 Nowhere Ln",
   city: "Springfield",
   state: "TN",
-  zip: 12345,
-  phone: 123456789,
+  zip: "12345",
+  phone: "123-456-789",
   email: "xyz@null.org"
 }
 ```
 
 ### Place Order
-* `POST /svc/cart/checkout`
+* `POST /svc/order/checkout`
 * 201: Success
 * Response Header: `Location: http://localhost:8080/svc/order/12345`
 
@@ -121,8 +121,8 @@ This project exists to compare service-layer implementations between Java framew
     address: "123 Nowhere Ln",
     city: "Springfield",
     state: "TN",
-    zip: 12345,
-    phone: 123456789,
+    zip: "12345",
+    phone: "123-456-789",
     email: "xyz@null.org"
   },
   items: [
