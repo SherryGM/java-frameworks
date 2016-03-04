@@ -39,7 +39,7 @@ This project exists to compare service-layer implementations between Java framew
 
 ### Add Item to Cart
 * `PUT /svc/cart/`
-* 204: Success
+* 200: Success
 * Request Body: `{ itemId: 1, qty: 1 }`
 
 ### List Items in Cart
@@ -62,13 +62,13 @@ This project exists to compare service-layer implementations between Java framew
 
 ### Update Qty in Cart
 * `POST /svc/cart/{itemId}`
-* 204: Success
+* 200: Success
 * 404: No such item in cart
 * Request Body: `{ qty: 2 }`
 
 ### Remove Item From Cart
 * `DELETE /svc/cart/{itemId}`
-* 204: Success
+* 200: Success
 * 404: No such item in cart
 
 ### Save Shipping Info
@@ -105,7 +105,7 @@ This project exists to compare service-layer implementations between Java framew
 
 ### Place Order
 * `POST /svc/order/checkout`
-* 201: Success
+* 200: Success
 * Response Header: `Location: http://localhost:8080/svc/order/12345`
 
 ### Fetch Order Info

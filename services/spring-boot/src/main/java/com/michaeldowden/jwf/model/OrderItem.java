@@ -2,10 +2,12 @@ package com.michaeldowden.jwf.model;
 
 import java.math.BigDecimal;
 
-public class CartItem {
+public class OrderItem {
 	private Integer id;
 	private Integer qty;
 	private BigDecimal price;
+	private String name;
+	private String shortname;
 
 	public Integer getId() {
 		return id;
@@ -29,6 +31,22 @@ public class CartItem {
 
 	public void setPrice(BigDecimal price) {
 		this.price = price;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getShortname() {
+		return shortname;
+	}
+
+	public void setShortname(String shortname) {
+		this.shortname = shortname;
 	}
 
 }

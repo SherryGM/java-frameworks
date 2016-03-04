@@ -10,7 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.michaeldowden.jwf.model.CartItem;
+import com.michaeldowden.jwf.model.Bourbon;
+import com.michaeldowden.jwf.model.OrderItem;
 import com.michaeldowden.jwf.model.ShoppingCart;
 import com.michaeldowden.jwf.service.CartService;
 import com.michaeldowden.jwf.service.ItemDao;
@@ -31,10 +32,13 @@ public class CartController {
 
 	@RequestMapping(value = "/svc/cart/{itemId}", method = PUT)
 	public void addToCart(@PathVariable("itemId") Integer itemId) {
-		final CartItem item = new CartItem();
+		final Bourbon bourbon = itemDao.findBourbon(itemId);
+		final OrderItem item = new OrderItem();
 		item.setId(itemId);
 		item.setQty(1);
-		item.setPrice(itemDao.findBourbon(itemId).getPrice());
+		item.setPrice(bourbon.getPrice());
+		item.setName(bourbon.getName());
+		item.setShortname(bourbon.getShortname());
 
 		System.out.println("Adding Item: " + itemId);
 

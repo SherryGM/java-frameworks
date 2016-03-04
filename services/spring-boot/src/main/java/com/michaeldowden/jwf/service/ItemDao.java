@@ -7,12 +7,14 @@ import java.sql.SQLException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.michaeldowden.jwf.model.Bourbon;
+import com.michaeldowden.jwf.web.ResourceNotFoundException;
 
 @Repository
 public class ItemDao {
@@ -26,15 +28,23 @@ public class ItemDao {
 	}
 
 	public Bourbon findBourbon(final Integer itemId) {
-		final String sql = "SELECT * FROM store.items WHERE id=:itemId";
-		return jdbc.queryForObject(sql, new MapSqlParameterSource("itemId", itemId),
-				new BourbonMapper());
+		try {
+			final String sql = "SELECT * FROM store.items WHERE id=:itemId";
+			return jdbc.queryForObject(sql, new MapSqlParameterSource("itemId", itemId),
+					new BourbonMapper());
+		} catch (EmptyResultDataAccessException e) {
+			throw new ResourceNotFoundException(e.getLocalizedMessage());
+		}
 	}
 
 	public Bourbon findBourbonByShortname(final String shortname) {
-		final String sql = "SELECT * FROM store.items WHERE shortname=:shortname";
-		return jdbc.queryForObject(sql, new MapSqlParameterSource("shortname", shortname),
-				new BourbonMapper());
+		try {
+			final String sql = "SELECT * FROM store.items WHERE shortname=:shortname";
+			return jdbc.queryForObject(sql, new MapSqlParameterSource("shortname", shortname),
+					new BourbonMapper());
+		} catch (EmptyResultDataAccessException e) {
+			throw new ResourceNotFoundException(e.getLocalizedMessage());
+		}
 	}
 
 	private static final class BourbonMapper implements RowMapper<Bourbon> {

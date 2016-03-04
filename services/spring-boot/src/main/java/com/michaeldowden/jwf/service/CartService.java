@@ -8,7 +8,7 @@ import java.math.BigDecimal;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 
-import com.michaeldowden.jwf.model.CartItem;
+import com.michaeldowden.jwf.model.OrderItem;
 import com.michaeldowden.jwf.model.ShoppingCart;
 import com.michaeldowden.jwf.web.ResourceNotFoundException;
 
@@ -19,7 +19,7 @@ public class CartService {
 
 	private void calculateTotal() {
 		BigDecimal total = new BigDecimal(0.0);
-		for (CartItem item : shoppingCart.getItems()) {
+		for (OrderItem item : shoppingCart.getItems()) {
 			BigDecimal subtotal = item.getPrice().multiply(valueOf(item.getQty()));
 			total = total.add(subtotal);
 		}
@@ -28,7 +28,7 @@ public class CartService {
 
 	private int findItemInCart(Integer itemId) {
 		for (int i = 0; i < shoppingCart.getItems().size(); i++) {
-			CartItem item = shoppingCart.getItems().get(i);
+			OrderItem item = shoppingCart.getItems().get(i);
 			if (item.getId() == itemId) {
 				return i;
 			}
@@ -41,14 +41,14 @@ public class CartService {
 		return shoppingCart;
 	}
 
-	public void addToCart(CartItem newItem) {
+	public void addToCart(OrderItem newItem) {
 		int i = findItemInCart(newItem.getId());
 		if (i < 0) {
 			// Add a new item to the cart
 			shoppingCart.getItems().add(newItem);
 		} else {
 			// Update quantity for existing item
-			CartItem cartItem = shoppingCart.getItems().get(i);
+			OrderItem cartItem = shoppingCart.getItems().get(i);
 			cartItem.setQty(cartItem.getQty() + newItem.getQty());
 		}
 	}
@@ -58,7 +58,7 @@ public class CartService {
 		if (i < 0) {
 			throw new ResourceNotFoundException("Item doesn't exist in Shopping Cart");
 		} else {
-			CartItem cartItem = shoppingCart.getItems().get(i);
+			OrderItem cartItem = shoppingCart.getItems().get(i);
 			cartItem.setQty(qty);
 		}
 	}
