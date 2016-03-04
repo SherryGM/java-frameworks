@@ -14,8 +14,10 @@ https://github.com/mkyong/spring-embedded-database
 
 http://www.mkyong.com/spring/spring-embedded-database-examples/
 
-5.5 hours
+7 hours
 
 https://dzone.com/articles/using-http-session-spring
 
 https://github.com/bijukunjummen/shopping-cart-cf-app/blob/master/src/main/java/pso/shop/service/ShoppingCartService.java
+
+5 hours on Model, Testing
