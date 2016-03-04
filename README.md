@@ -115,6 +115,7 @@ This project exists to compare service-layer implementations between Java framew
 * Response Body:
 ```json
 {
+  orderNumber: 123456789,
   total: 41.99,
   address: {
     name: "Michael Dowden",
@@ -128,8 +129,8 @@ This project exists to compare service-layer implementations between Java framew
   items: [
     {
       id: 1,
+      qty: 2,
       name: "Booker's Single Barrel Bourbon",
-      description: "",
       price: 41.99,
       shortname: "bookers"
     }, {
