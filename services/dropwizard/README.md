@@ -8,6 +8,12 @@ Started with Gradle build file in Eclipse
 
 Took 30 minutes to get Hello World service running
  
+## Worked with JDBI to get first Items service running
 
-0.5 hours on Dropwizard
-? minutes on Derby, Testing
+http://jdbi.org/
+http://jdbi.org/getting_jdbi/
+http://jdbi.org/sql_object_api_queries/
+http://stackoverflow.com/questions/34436304/how-to-run-sql-script-file-using-jdbi
+
+2 hours on Dropwizard, JDBI
+1 minutes on Derby, Testing

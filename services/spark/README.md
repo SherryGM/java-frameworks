@@ -22,5 +22,5 @@ http://sparkjava.com/documentation.html
 Took another hour total
 
 
-2 hours on Spark
+2 hours on Spark, MyBatis
 75 minutes on Derby, Testing

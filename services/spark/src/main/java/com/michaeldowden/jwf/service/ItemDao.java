@@ -26,12 +26,9 @@ public class ItemDao {
 			sqlSessionFactory = builder.build(inputStream);
 
 			// Run Setup Script
-			SqlSession session = sqlSessionFactory.openSession();
-			try {
+			try (SqlSession session = sqlSessionFactory.openSession()) {
 				ScriptRunner runner = new ScriptRunner(session.getConnection());
 				runner.runScript(Resources.getResourceAsReader(SCRIPT));
-			} finally {
-				session.close();
 			}
 		} catch (IOException e) {
 			throw new RuntimeException(e);
@@ -43,32 +40,23 @@ public class ItemDao {
 	}
 
 	public List<Bourbon> listItems() {
-		SqlSession session = sqlSessionFactory.openSession();
-		try {
+		try (SqlSession session = sqlSessionFactory.openSession()) {
 			ItemMapper mapper = session.getMapper(ItemMapper.class);
 			return mapper.listItems();
-		} finally {
-			session.close();
 		}
 	}
 
 	public Bourbon findBourbon(final Integer itemId) {
-		SqlSession session = sqlSessionFactory.openSession();
-		try {
+		try (SqlSession session = sqlSessionFactory.openSession()) {
 			ItemMapper mapper = session.getMapper(ItemMapper.class);
 			return mapper.findBourbon(itemId);
-		} finally {
-			session.close();
 		}
 	}
 
 	public Bourbon findBourbonByShortname(final String shortname) {
-		SqlSession session = sqlSessionFactory.openSession();
-		try {
+		try (SqlSession session = sqlSessionFactory.openSession()) {
 			ItemMapper mapper = session.getMapper(ItemMapper.class);
 			return mapper.findBourbonByShortname(shortname);
-		} finally {
-			session.close();
 		}
 	}
 
