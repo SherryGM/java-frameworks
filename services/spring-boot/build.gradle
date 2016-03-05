@@ -25,6 +25,7 @@ repositories {
 }
 
 dependencies {
+	compile project(':common')
     compile("org.springframework.boot:spring-boot-starter-web")
     compile("org.springframework:spring-jdbc:4.1.6.RELEASE")
     compile("org.apache.derby:derby:10.11.1.1")

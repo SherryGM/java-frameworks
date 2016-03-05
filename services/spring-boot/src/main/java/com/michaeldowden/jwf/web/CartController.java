@@ -40,8 +40,6 @@ public class CartController {
 		item.setName(bourbon.getName());
 		item.setShortname(bourbon.getShortname());
 
-		System.out.println("Adding Item: " + itemId);
-
 		cartSvc.addToCart(item);
 	}
 
