@@ -1,9 +1,8 @@
 package com.michaeldowden.jwf.service;
 
+import static com.michaeldowden.jwf.utils.OrderUtils.buildOrder;
+import static com.michaeldowden.jwf.utils.OrderUtils.findOrderInHistory;
 import static org.springframework.context.annotation.ScopedProxyMode.TARGET_CLASS;
-
-import java.util.HashMap;
-import java.util.Map;
 
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
@@ -16,8 +15,6 @@ import com.michaeldowden.jwf.web.ResourceNotFoundException;
 @Service
 @Scope(proxyMode = TARGET_CLASS, value = "session")
 public class OrderService {
-	private int lastOrderNumber = 1000000;
-	private Map<Integer, Order> orderHistory = new HashMap<Integer, Order>();
 	private Order order = new Order();
 
 	public void updateShippingAddress(Address address) {
@@ -29,11 +26,7 @@ public class OrderService {
 	}
 
 	public Integer checkout(ShoppingCart cart) {
-		Integer orderNumber = lastOrderNumber++;
-		order.setOrderNumber(orderNumber);
-		order.setItems(cart.getItems());
-		order.setTotal(cart.getTotal());
-		orderHistory.put(orderNumber, order);
+		Integer orderNumber = buildOrder(order, cart);
 		// Clear current order
 		order = new Order();
 		// Return Order # for lookup
@@ -41,10 +34,10 @@ public class OrderService {
 	}
 
 	public Order lookupOrder(Integer orderNumber) {
-		if (orderHistory.containsKey(orderNumber)) {
-			return orderHistory.get(orderNumber);
-		} else {
+		Order order = findOrderInHistory(orderNumber);
+		if (order == null) {
 			throw new ResourceNotFoundException("Cannot find Order #" + orderNumber);
 		}
+		return order;
 	}
 }

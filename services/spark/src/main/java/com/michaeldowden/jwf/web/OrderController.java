@@ -11,8 +11,8 @@ import com.michaeldowden.jwf.service.OrderService;
 
 public class OrderController {
 	private final Gson gson = new Gson();
-	private final CartService cartSvc = CartService.getInstance();
-	private final OrderService orderSvc = OrderService.getInstance();
+	private final CartService cartSvc = new CartService();
+	private final OrderService orderSvc = new OrderService();
 
 	public void initialize() {
 		get("/svc/order/shipping", "application/json", (req, res) -> {

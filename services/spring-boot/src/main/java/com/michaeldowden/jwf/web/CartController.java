@@ -33,14 +33,8 @@ public class CartController {
 	@RequestMapping(value = "/svc/cart/{itemId}", method = PUT)
 	public void addToCart(@PathVariable("itemId") Integer itemId) {
 		final Bourbon bourbon = itemDao.findBourbon(itemId);
-		final OrderItem item = new OrderItem();
-		item.setId(itemId);
-		item.setQty(1);
-		item.setPrice(bourbon.getPrice());
-		item.setName(bourbon.getName());
-		item.setShortname(bourbon.getShortname());
 
-		cartSvc.addToCart(item);
+		cartSvc.addToCart(new OrderItem(bourbon));
 	}
 
 	@RequestMapping(value = "/svc/cart/{itemId}", method = POST)

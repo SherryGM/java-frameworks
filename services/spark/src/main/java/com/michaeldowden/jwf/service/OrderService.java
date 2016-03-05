@@ -1,10 +1,8 @@
 package com.michaeldowden.jwf.service;
 
+import static com.michaeldowden.jwf.utils.OrderUtils.buildOrder;
+import static com.michaeldowden.jwf.utils.OrderUtils.findOrderInHistory;
 import static spark.Spark.halt;
-
-import java.util.HashMap;
-import java.util.Map;
-
 import spark.Request;
 
 import com.michaeldowden.jwf.model.Address;
@@ -12,17 +10,10 @@ import com.michaeldowden.jwf.model.Order;
 import com.michaeldowden.jwf.model.ShoppingCart;
 
 public class OrderService {
-	private static final OrderService SINGLETON = new OrderService();
 	private static final String ORDER = "ORDER";
 
-	private Map<Integer, Order> orderHistory = new HashMap<Integer, Order>();
-	private int lastOrderNumber = 1000000;
-
-	private OrderService() {
-	}
-
-	public static OrderService getInstance() {
-		return SINGLETON;
+	private void clearOrder(Request req) {
+		req.session().invalidate();
 	}
 
 	public Order fetchOrder(Request req) {
@@ -43,24 +34,18 @@ public class OrderService {
 	}
 
 	public Integer checkout(Request req, ShoppingCart cart) {
-		Integer orderNumber = lastOrderNumber++;
-		Order order = fetchOrder(req);
-		order.setOrderNumber(orderNumber);
-		order.setItems(cart.getItems());
-		order.setTotal(cart.getTotal());
-		orderHistory.put(orderNumber, order);
+		Integer orderNumber = buildOrder(fetchOrder(req), cart);
 		// Clear current order
-		order = new Order();
+		clearOrder(req);
 		// Return Order # for lookup
 		return orderNumber;
 	}
 
 	public Order lookupOrder(Integer orderNumber) {
-		if (orderHistory.containsKey(orderNumber)) {
-			return orderHistory.get(orderNumber);
-		} else {
+		Order order = findOrderInHistory(orderNumber);
+		if (order == null) {
 			halt(404, "Cannot find Order #" + orderNumber);
-			return null;
 		}
+		return order;
 	}
 }

@@ -6,7 +6,6 @@ import static spark.Spark.post;
 import static spark.Spark.put;
 
 import com.google.gson.Gson;
-import com.michaeldowden.jwf.model.Bourbon;
 import com.michaeldowden.jwf.model.OrderItem;
 import com.michaeldowden.jwf.service.CartService;
 import com.michaeldowden.jwf.service.ItemDao;
@@ -14,7 +13,7 @@ import com.michaeldowden.jwf.service.ItemDao;
 public class CartController {
 	private final Gson gson = new Gson();
 	private final ItemDao itemDao = ItemDao.getInstance();
-	private final CartService cartSvc = CartService.getInstance();
+	private final CartService cartSvc = new CartService();
 
 	public void initialize() {
 		get("/svc/cart", "application/json", (req, res) -> {
@@ -23,13 +22,7 @@ public class CartController {
 
 		put("/svc/cart/:itemId", (req, res) -> {
 			Integer itemId = Integer.valueOf(req.params(":itemId"));
-			final Bourbon bourbon = itemDao.findBourbon(itemId);
-			final OrderItem item = new OrderItem();
-			item.setId(itemId);
-			item.setQty(1);
-			item.setPrice(bourbon.getPrice());
-			item.setName(bourbon.getName());
-			item.setShortname(bourbon.getShortname());
+			final OrderItem item = new OrderItem(itemDao.findBourbon(itemId));
 
 			cartSvc.addToCart(req, item);
 			return item;

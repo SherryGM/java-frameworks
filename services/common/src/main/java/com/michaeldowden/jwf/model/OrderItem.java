@@ -9,6 +9,17 @@ public class OrderItem {
 	private String name;
 	private String shortname;
 
+	public OrderItem() {
+	}
+
+	public OrderItem(Bourbon item) {
+		this.id = item.getId();
+		this.price = item.getPrice();
+		this.name = item.getName();
+		this.shortname = item.getShortname();
+		this.qty = 1;
+	}
+
 	public Integer getId() {
 		return id;
 	}
