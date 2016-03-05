@@ -24,11 +24,11 @@ printResult
 
 echo -n "Fetching Eagle Rare..."
 expected=200
-result=`curl -s -i -X PUT http://localhost:8080/svc/item/eagle-rare-10yr | head -n 1 | cut -d$' ' -f2`
+result=`curl -s -i -X GET http://localhost:8080/svc/item/eagle-rare-10yr | head -n 1 | cut -d$' ' -f2`
 printResult
 
 echo -n "Fetching Crazy Ivan (does not exist)..."
 expected=404
-result=`curl -s -i -X PUT http://localhost:8080/svc/item/crazy-ivan | head -n 1 | cut -d$' ' -f2`
+result=`curl -s -i -X GET http://localhost:8080/svc/item/crazy-ivan | head -n 1 | cut -d$' ' -f2`
 printResult
 

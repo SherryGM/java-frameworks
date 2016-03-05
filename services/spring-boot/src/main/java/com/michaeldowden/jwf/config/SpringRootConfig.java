@@ -18,7 +18,7 @@ public class SpringRootConfig {
 		// no need to shutdown, EmbeddedDatabaseFactoryBean will take care of this
 		EmbeddedDatabaseBuilder builder = new EmbeddedDatabaseBuilder();
 		return builder.setName("bourbon").setType(EmbeddedDatabaseType.DERBY)
-				.addScript("db/sql/create-db.sql").addScript("db/sql/insert-data.sql").build();
+				.addScript("db/bourbon.sql").build();
 	}
 
 	@Bean

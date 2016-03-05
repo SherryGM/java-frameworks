@@ -1,4 +1,4 @@
-package com.michaeldowden;
+package com.michaeldowden.jwf;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
