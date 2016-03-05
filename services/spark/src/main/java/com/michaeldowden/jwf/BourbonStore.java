@@ -5,6 +5,7 @@ import static spark.Spark.port;
 
 import com.michaeldowden.jwf.web.CartController;
 import com.michaeldowden.jwf.web.ItemController;
+import com.michaeldowden.jwf.web.OrderController;
 
 public class BourbonStore {
 
@@ -15,6 +16,7 @@ public class BourbonStore {
 
 		new ItemController().initialize();
 		new CartController().initialize();
+		new OrderController().initialize();
 	}
 
 }
