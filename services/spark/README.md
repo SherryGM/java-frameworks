@@ -16,6 +16,11 @@ http://www.mybatis.org/mybatis-3/java-api.html
 
 http://www.programcreek.com/java-api-examples/index.php?api=org.apache.ibatis.jdbc.ScriptRunner
 
+### Added Cart services
 
-30 minutes on Spark
-1 hour on Derby
+http://sparkjava.com/documentation.html
+Took another hour total
+
+
+75 minutes on Spark
+75 minutes on Derby, Testing

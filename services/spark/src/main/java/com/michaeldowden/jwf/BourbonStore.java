@@ -3,6 +3,7 @@ package com.michaeldowden.jwf;
 import static spark.Spark.get;
 import static spark.Spark.port;
 
+import com.michaeldowden.jwf.web.CartController;
 import com.michaeldowden.jwf.web.ItemController;
 
 public class BourbonStore {
@@ -13,6 +14,7 @@ public class BourbonStore {
 		get("/hello", (req, res) -> "Hello World");
 
 		new ItemController().initialize();
+		new CartController().initialize();
 	}
 
 }

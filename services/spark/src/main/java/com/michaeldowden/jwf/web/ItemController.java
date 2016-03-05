@@ -3,22 +3,19 @@ package com.michaeldowden.jwf.web;
 import static spark.Spark.get;
 import static spark.Spark.halt;
 
+import com.google.gson.Gson;
 import com.michaeldowden.jwf.model.Bourbon;
 import com.michaeldowden.jwf.service.ItemDao;
-import com.michaeldowden.jwf.service.JsonTransformer;
 
 public class ItemController {
 
-	private ItemDao itemDao;
-
-	public ItemController() {
-		itemDao = new ItemDao();
-	}
+	private final Gson gson = new Gson();
+	private final ItemDao itemDao = ItemDao.getInstance();
 
 	public void initialize() {
 		get("/svc/items", "application/json", (req, res) -> {
 			return itemDao.listItems();
-		}, new JsonTransformer());
+		}, gson::toJson);
 
 		get("/svc/item/:shortname", "application/json", (req, res) -> {
 			Bourbon item = itemDao.findBourbonByShortname(req.params(":shortname"));
@@ -26,6 +23,6 @@ public class ItemController {
 				halt(404);
 			}
 			return item;
-		}, new JsonTransformer());
+		}, gson::toJson);
 	}
 }

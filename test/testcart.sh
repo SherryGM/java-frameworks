@@ -7,7 +7,7 @@ endColor='\e[0m'
 
 # Setup Functions
 function printResult {
-	if [ "$result" == "$expected" ]
+	if [ "$result"="$expected" ]
 	then
 		echo -e "${colorGreen}OK${endColor}"
 	else

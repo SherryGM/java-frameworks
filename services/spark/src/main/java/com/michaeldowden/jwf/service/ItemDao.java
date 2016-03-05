@@ -13,12 +13,13 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import com.michaeldowden.jwf.model.Bourbon;
 
 public class ItemDao {
+	private static final ItemDao SINGLETON = new ItemDao();
 	private static final String CONFIG = "mybatis-config.xml";
 	private static final String SCRIPT = "bourbon.sql";
 
 	private SqlSessionFactory sqlSessionFactory;
 
-	public ItemDao() {
+	private ItemDao() {
 		try {
 			InputStream inputStream = Resources.getResourceAsStream(CONFIG);
 			SqlSessionFactoryBuilder builder = new SqlSessionFactoryBuilder();
@@ -35,6 +36,10 @@ public class ItemDao {
 		} catch (IOException e) {
 			throw new RuntimeException(e);
 		}
+	}
+
+	public static ItemDao getInstance() {
+		return SINGLETON;
 	}
 
 	public List<Bourbon> listItems() {
