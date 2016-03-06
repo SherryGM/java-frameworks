@@ -15,5 +15,11 @@ http://jdbi.org/getting_jdbi/
 http://jdbi.org/sql_object_api_queries/
 http://stackoverflow.com/questions/34436304/how-to-run-sql-script-file-using-jdbi
 
+## API Work
+
+It looks like the Dropwizard best practices are somewhat different than other frameworks. I opted
+for similarity with other frameworks rather than a pure Dropwizard approach.
+
+
 2 hours on Dropwizard, JDBI
 1 minutes on Derby, Testing
