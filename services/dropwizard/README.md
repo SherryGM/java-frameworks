@@ -20,6 +20,11 @@ http://stackoverflow.com/questions/34436304/how-to-run-sql-script-file-using-jdb
 It looks like the Dropwizard best practices are somewhat different than other frameworks. I opted
 for similarity with other frameworks rather than a pure Dropwizard approach.
 
+Struggled to figure out how to process POST form parameters:
 
-2 hours on Dropwizard, JDBI
+http://stackoverflow.com/questions/6097166/how-do-i-read-post-parameters-for-a-restful-service-using-jersey
+
+
+
+4 hours on Dropwizard, JDBI
 1 minutes on Derby, Testing

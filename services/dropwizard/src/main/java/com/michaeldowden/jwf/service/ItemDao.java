@@ -13,7 +13,7 @@ public interface ItemDao extends AutoCloseable {
 	@SqlQuery("SELECT * FROM store.items")
 	public List<Bourbon> listItems();
 
-	@SqlQuery(" * FROM store.items WHERE id = :itemId")
+	@SqlQuery("SELECT * FROM store.items WHERE id = :itemId")
 	public Bourbon findBourbon(@Bind("itemId") Integer itemId);
 
 	@SqlQuery("SELECT * FROM store.items WHERE shortname = :shortname")

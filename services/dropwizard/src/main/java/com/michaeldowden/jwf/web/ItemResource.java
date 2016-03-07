@@ -9,6 +9,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
 import org.skife.jdbi.v2.DBI;
 
@@ -34,10 +35,12 @@ public class ItemResource {
 
 	@GET
 	@Path("/item/{shortname}")
-	public Bourbon fetchItem(@PathParam("shortname") NonEmptyStringParam shortname)
+	public Response fetchItem(@PathParam("shortname") NonEmptyStringParam shortname)
 			throws Exception {
 		try (ItemDao itemDao = dbi.open(ItemDao.class)) {
-			return itemDao.findBourbonByShortname(shortname.get().get());
+			Bourbon item = itemDao.findBourbonByShortname(shortname.get().get());
+			return item == null ? Response.status(Response.Status.NOT_FOUND).build() : Response.ok(
+					item).build();
 		}
 	}
 }

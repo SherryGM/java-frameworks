@@ -1,16 +1,18 @@
 package com.michaeldowden.jwf;
 
 import io.dropwizard.Application;
+import io.dropwizard.jersey.sessions.SessionFactoryProvider;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
 
 import org.apache.derby.jdbc.EmbeddedConnectionPoolDataSource;
 import org.apache.derby.jdbc.EmbeddedDataSource;
+import org.eclipse.jetty.server.session.SessionHandler;
 import org.skife.jdbi.v2.DBI;
 import org.skife.jdbi.v2.Handle;
 
 import com.michaeldowden.jwf.config.RootConfiguration;
-import com.michaeldowden.jwf.web.HelloWorldResource;
+import com.michaeldowden.jwf.web.CartResource;
 import com.michaeldowden.jwf.web.ItemResource;
 
 public class BourbonStore extends Application<RootConfiguration> {
@@ -23,7 +25,7 @@ public class BourbonStore extends Application<RootConfiguration> {
 
 	@Override
 	public String getName() {
-		return "hello-world";
+		return "BourbonStore";
 	}
 
 	@Override
@@ -38,12 +40,14 @@ public class BourbonStore extends Application<RootConfiguration> {
 
 	@Override
 	public void run(RootConfiguration configuration, Environment environment) {
-		final HelloWorldResource resource = new HelloWorldResource(configuration.getTemplate(),
-				configuration.getDefaultName());
-		environment.jersey().register(resource);
-
 		ItemResource itemResource = new ItemResource(dbi);
+		CartResource cartResource = new CartResource(dbi);
+
+		environment.jersey().register(SessionFactoryProvider.class);
+		environment.servlets().setSessionHandler(new SessionHandler());
+
 		environment.jersey().register(itemResource);
+		environment.jersey().register(cartResource);
 	}
 
 }
