@@ -12,6 +12,15 @@
   clear: both;
 }
 
+body {
+  background-image: url('../img/bourbon.svg');
+  background-repeat: no-repeat;
+  background-width: 50%;
+  position: bottom left;
+}
+
+h1 { border-bottom: solid 1px @orange;}
+
 a:link, a:visited {
   color: @orange;
 }
@@ -38,12 +47,20 @@ i {
   text-align: right;
 }
 
-button.btn {
+button.btn, a.button {
   background: lighten(@orange, 10%);
   color: darken(@gray, 10%);
   font-weight: bold;
   &:hover, &:focus, &:active {
     background: lighten(@orange, 20%);
+  }
+}
+
+a.button {
+  padding:5px 10px;
+  border-radius: 5px;
+  &:hover, &:focus, &:active {
+  text-decoration: none;
   }
 }
 
@@ -76,11 +93,11 @@ button.description {
   border-radius: 4px;
   padding: 5px 5px 30px;
   img {
-    width: 33%;
+    width: 32%;
     float: left;
   }
   div {
-    width: 66%;
+    width: 65%;
     float: right;
   }
   h2 {
@@ -97,6 +114,12 @@ button.description {
   }
 }
 
+img {
+  border: solid 1px lighten(@orange, 20%);
+  padding: 5px;
+  border-radius: 5px;
+  background-color: white;
+}
 img.img-thumbnail {
   max-width: 200px;
 }
@@ -107,7 +130,8 @@ img.img-thumbnail {
   img { width: 15%; }
   div { 
     width: 42%;
-    float: left;}
+    float: left;
+    margin-left: 20px; }
   div:last-child {
     width: 42%;
     padding: 20px 10px 5px 0;
@@ -144,6 +168,23 @@ label {font-weight: normal; }
   text-align: right;
   margin-bottom: 20px;
 }
+
+.form {
+  width: 50%;
+  margin: 20px auto;
+  .row {
+    margin-bottom: 10px;
+  }
+}
+
+table img {
+  width: 50px;
+}
+
+.ship-info  div.col-sm-3 {
+  font-weight: bold;
+}
+
 
 @media only screen and (max-width: 480px) {
   .bottle {
@@ -182,9 +223,9 @@ label {font-weight: normal; }
     width: 100%;
     img { width: 20%; }
     div { 
-      width: 80%;
+      width: 70%;
       float: none;
-      margin-left: 20%;}
+      margin-left: 30%;}
     div:last-child {
       width: 100%;
       padding: 5px 0 0;
@@ -195,7 +236,9 @@ label {font-weight: normal; }
       border-top: solid 1px lighten(@gray, 50%);
     }
   }
-
+  .form {
+    width: 100%;
+  }
 }
 
 @media only screen and (min-width: 980px) {

@@ -6,7 +6,9 @@ angular.module('bourbon', [
   'ui.bootstrap',
   'ngAnimate',
   'bourbon.store',
-  'bourbon.cart'
+  'bourbon.cart',
+  'bourbon.checkout',
+  'bourbon.confirmation'
 
 ])
 

@@ -6,6 +6,15 @@
   display: table;
   clear: both;
 }
+body {
+  background-image: url('../img/bourbon.svg');
+  background-repeat: no-repeat;
+  background-width: 50%;
+  position: bottom left;
+}
+h1 {
+  border-bottom: solid 1px #e89747;
+}
 a:link,
 a:visited {
   color: #e89747;
@@ -29,15 +38,28 @@ i {
 .cart {
   text-align: right;
 }
-button.btn {
+button.btn,
+a.button {
   background: #eeb174;
   color: #424242;
   font-weight: bold;
 }
 button.btn:hover,
+a.button:hover,
 button.btn:focus,
-button.btn:active {
+a.button:focus,
+button.btn:active,
+a.button:active {
   background: #f3caa2;
+}
+a.button {
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+a.button:hover,
+a.button:focus,
+a.button:active {
+  text-decoration: none;
 }
 button.description {
   border: none;
@@ -69,11 +91,11 @@ button.description:active {
   padding: 5px 5px 30px;
 }
 .bottle img {
-  width: 33%;
+  width: 32%;
   float: left;
 }
 .bottle div {
-  width: 66%;
+  width: 65%;
   float: right;
 }
 .bottle h2 {
@@ -88,6 +110,12 @@ button.description:active {
   right: 0;
   margin: 5px;
 }
+img {
+  border: solid 1px #f3caa2;
+  padding: 5px;
+  border-radius: 5px;
+  background-color: white;
+}
 img.img-thumbnail {
   max-width: 200px;
 }
@@ -101,6 +129,7 @@ img.img-thumbnail {
 .items.list .bottle div {
   width: 42%;
   float: left;
+  margin-left: 20px;
 }
 .items.list .bottle div:last-child {
   width: 42%;
@@ -139,6 +168,19 @@ label {
 .checkout {
   text-align: right;
   margin-bottom: 20px;
+}
+.form {
+  width: 50%;
+  margin: 20px auto;
+}
+.form .row {
+  margin-bottom: 10px;
+}
+table img {
+  width: 50px;
+}
+.ship-info div.col-sm-3 {
+  font-weight: bold;
 }
 @media only screen and (max-width: 480px) {
   .bottle {
@@ -183,9 +225,9 @@ label {
     width: 20%;
   }
   .items.list .bottle div {
-    width: 80%;
+    width: 70%;
     float: none;
-    margin-left: 20%;
+    margin-left: 30%;
   }
   .items.list .bottle div:last-child {
     width: 100%;
@@ -195,6 +237,9 @@ label {
     bottom: 0;
     right: 0;
     border-top: solid 1px #dbdbdb;
+  }
+  .form {
+    width: 100%;
   }
 }
 @media only screen and (min-width: 980px) {
