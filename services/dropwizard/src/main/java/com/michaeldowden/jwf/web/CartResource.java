@@ -3,7 +3,6 @@ package com.michaeldowden.jwf.web;
 import io.dropwizard.jersey.params.IntParam;
 import io.dropwizard.jersey.sessions.Session;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -14,7 +13,6 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
-import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
@@ -59,8 +57,7 @@ public class CartResource {
 	@Path("/cart/{itemId}")
 	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
 	public Response updateQuantity(@PathParam("itemId") IntParam itemId,
-			@FormParam("qty") IntParam qty, @Context HttpServletRequest request,
-			@Session HttpSession session) {
+			@FormParam("qty") IntParam qty, @Session HttpSession session) {
 		try {
 			cartSvc.updateQuantity(session, itemId.get(), qty.get());
 		} catch (ItemNotFoundException e) {
