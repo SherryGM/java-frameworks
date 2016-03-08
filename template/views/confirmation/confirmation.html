@@ -52,7 +52,7 @@
   </thead>
   <tbody>
     <tr ng-repeat="bottle in order.items">
-      <td> <img src="../../img/{{bottle.shortname}}.png"></td>
+      <td> <img ng-src="../../img/{{bottle.shortname}}.png" alt="{{bottle.name}}"></td>
       <td>{{bottle.name}}</td>
       <td>{{bottle.qty}}</td>
       <td>{{bottle.price | currency}}</td>

@@ -11,7 +11,7 @@
 <form name="cartForm">
   <div class="items list">
     <div class="bottle" ng-repeat="bottle in shoppingCart.items">
-      <img src="../../img/{{bottle.shortname}}.png">
+      <img ng-src="../../img/{{bottle.shortname}}.png" alt="{{bottle.name}}">
       <div>
         <h2>{{bottle.name}}</h2>
         <p>Price: $ {{bottle.price}}</p>

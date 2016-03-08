@@ -34,6 +34,6 @@ http://stackoverflow.com/questions/18722936/how-to-use-bazaarvoice-dropwizard-co
 https://groups.google.com/forum/#!msg/dropwizard-user/a_jNCLE7oXM/J4B-R_FlYcEJ
 
 
-7 hours on Dropwizard, JDBI
+7.5 hours on Dropwizard, JDBI
 1 hour on Derby, Testing
 Startup: 1.811 seconds

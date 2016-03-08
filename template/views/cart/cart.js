@@ -32,7 +32,9 @@ angular.module('bourbon.cart', ['ngRoute', 'ui.bootstrap'])
   $scope.updateQty = function(item) {
     if(item && item.qty) {
       //Spring can't see the proper POST parameter method
-      $http.post('/svc/cart/'+item.id+'?qty='+item.qty, 'qty='+item.qty).then(refresh);
+      $http.post('/svc/cart/'+item.id, 'qty='+item.qty, {
+        headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+      }).then(refresh);
     }
   };
 
