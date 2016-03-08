@@ -24,7 +24,7 @@ import com.michaeldowden.jwf.service.CartService;
 import com.michaeldowden.jwf.service.ItemDao;
 import com.michaeldowden.jwf.utils.ItemNotFoundException;
 
-@Path("/svc")
+@Path("/cart/")
 @Produces(MediaType.APPLICATION_JSON)
 public class CartResource {
 	private CartService cartSvc = new CartService();
@@ -35,13 +35,12 @@ public class CartResource {
 	}
 
 	@GET
-	@Path("/cart")
 	public ShoppingCart fetchCart(@Session HttpSession session) throws Exception {
 		return cartSvc.fetchCart(session);
 	}
 
 	@PUT
-	@Path("/cart/{itemId}")
+	@Path("/{itemId}")
 	public Response addToCart(@PathParam("itemId") IntParam itemId, @Session HttpSession session) {
 		try (ItemDao itemDao = dbi.open(ItemDao.class)) {
 			OrderItem item = new OrderItem(itemDao.findBourbon(itemId.get()));
@@ -54,8 +53,8 @@ public class CartResource {
 	}
 
 	@POST
-	@Path("/cart/{itemId}")
 	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+	@Path("/{itemId}")
 	public Response updateQuantity(@PathParam("itemId") IntParam itemId,
 			@FormParam("qty") IntParam qty, @Session HttpSession session) {
 		try {
@@ -67,7 +66,7 @@ public class CartResource {
 	}
 
 	@DELETE
-	@Path("/cart/{itemId}")
+	@Path("/{itemId}")
 	public Response removeFromCart(@PathParam("itemId") IntParam itemId,
 			@Session HttpSession session) {
 		try {

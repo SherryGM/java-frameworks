@@ -16,7 +16,7 @@ import org.skife.jdbi.v2.DBI;
 import com.michaeldowden.jwf.model.Bourbon;
 import com.michaeldowden.jwf.service.ItemDao;
 
-@Path("/svc")
+@Path("/")
 @Produces(MediaType.APPLICATION_JSON)
 public class ItemResource {
 	private DBI dbi;

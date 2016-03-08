@@ -24,7 +24,16 @@ Struggled to figure out how to process POST form parameters:
 
 http://stackoverflow.com/questions/6097166/how-do-i-read-post-parameters-for-a-restful-service-using-jersey
 
+### Static Files
+
+It is possible to configure static files outside the project, but this requires an additional
+dependency. Also required some figuring out how to configure Dropwizard.
+
+https://github.com/bazaarvoice/dropwizard-configurable-assets-bundle
+http://stackoverflow.com/questions/18722936/how-to-use-bazaarvoice-dropwizard-configurable-assets-bundle
+https://groups.google.com/forum/#!msg/dropwizard-user/a_jNCLE7oXM/J4B-R_FlYcEJ
 
 
-5.5 hours on Dropwizard, JDBI
+7 hours on Dropwizard, JDBI
 1 hour on Derby, Testing
+Startup: 1.811 seconds

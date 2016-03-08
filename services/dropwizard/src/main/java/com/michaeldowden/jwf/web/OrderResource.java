@@ -19,20 +19,20 @@ import com.michaeldowden.jwf.model.Order;
 import com.michaeldowden.jwf.service.CartService;
 import com.michaeldowden.jwf.service.OrderService;
 
-@Path("/svc")
+@Path("/order/")
 @Produces(MediaType.APPLICATION_JSON)
 public class OrderResource {
 	private OrderService orderSvc = new OrderService();
 	private CartService cartSvc = new CartService();
 
 	@GET
-	@Path("/order/shipping")
+	@Path("/shipping")
 	public Address fetchShippingAddress(@Session HttpSession session) {
 		return orderSvc.fetchShippingAddress(session);
 	}
 
 	@PUT
-	@Path("/order/shipping")
+	@Path("/shipping")
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response updateShippingAddress(@Session HttpSession session, Address address) {
 		orderSvc.updateShippingAddress(session, address);
@@ -40,13 +40,13 @@ public class OrderResource {
 	}
 
 	@POST
-	@Path("/order/checkout")
+	@Path("/checkout")
 	public Integer checkout(@Session HttpSession session) {
 		return orderSvc.checkout(session, cartSvc.fetchCart(session));
 	}
 
 	@GET
-	@Path("/order/{orderNumber}")
+	@Path("/{orderNumber}")
 	public Order lookupOrder(@PathParam("orderNumber") IntParam orderNumber) {
 		return orderSvc.lookupOrder(orderNumber.get());
 	}

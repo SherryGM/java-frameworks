@@ -34,4 +34,4 @@ https://gsmblog.net/blog/spark-framework-the-tiny-framework-that-almost-could/
 
 2.5 hours on Spark, MyBatis, Integration
 75 minutes on Derby, Testing
-Startup: 803 milliseconds
+Startup: 0.803 seconds

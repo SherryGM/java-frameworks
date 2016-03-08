@@ -1,0 +1,5 @@
+server:
+  rootPath: '/svc/'
+assets:
+    overrides:
+        /: ../../template
