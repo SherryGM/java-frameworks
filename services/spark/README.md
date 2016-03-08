@@ -21,6 +21,17 @@ http://www.programcreek.com/java-api-examples/index.php?api=org.apache.ibatis.jd
 http://sparkjava.com/documentation.html
 Took another hour total
 
+### Integration
 
-2 hours on Spark, MyBatis
+Integration requires a Symlink:
+
+/java-frameworks/template -> services/spark/src/main/resources/template
+
+### More thoughts
+
+https://gsmblog.net/blog/spark-framework-the-tiny-framework-that-almost-could/
+
+
+2.5 hours on Spark, MyBatis, Integration
 75 minutes on Derby, Testing
+Startup: 803 milliseconds

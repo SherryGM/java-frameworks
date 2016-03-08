@@ -8,7 +8,7 @@
 </div>
 <div class="items">
   <div class="bottle" ng-repeat="bottle in bottles">
-    <img src="../../img/{{bottle.shortname}}.png">
+    <img ng-src="../../img/{{bottle.shortname}}.png" alt="{{bottle.name}}">
     <div class="group">
       <h2>{{bottle.name}}</h2>
       <button ng-click="open('md', bottle)" class="description"><i class="fa fa-info-circle"></i>Description</button>
@@ -24,7 +24,7 @@
     <h2>{{bottle.name}}</h2>
   </div>
   <div class="modal-body group">
-    <img src="../../img/{{bottle.shortname}}.png">
+    <img ng-src="../../img/{{bottle.shortname}}.png" alt="{{bottle.name}}">
     <div>
       <h3>Description</h3>
       <p>{{bottle.description}}</p>
