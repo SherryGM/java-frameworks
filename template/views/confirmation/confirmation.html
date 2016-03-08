@@ -4,37 +4,37 @@
   <div class="col-sm-6 ship-info">
     <div class="row">
       <div class="col-sm-3">Order Number</div>
-      <div class="col-sm-6">{{confirmation.orderNumber}}</div>
+      <div class="col-sm-6">{{order.orderNumber}}</div>
     </div>
   </div>
   <div class="col-sm-6 ship-info">
     <div class="row">
       <div class="col-sm-3">Name</div>
-      <div class="col-sm-6">{{confirmation.name}}</div>
+      <div class="col-sm-6">{{order.address.name}}</div>
     </div>
     <div class="row">
       <div class="col-sm-3">Address</div>
-      <div class="col-sm-6">{{confirmation.address}}</div>
+      <div class="col-sm-6">{{order.address.address}}</div>
     </div>
     <div class="row">
       <div class="col-sm-3">City</div>
-      <div class="col-sm-6">{{confirmation.city}}</div>
+      <div class="col-sm-6">{{order.address.city}}</div>
     </div>
     <div class="row">
       <div class="col-sm-3">State</div>
-      <div class="col-sm-6">{{confirmation.state}}</div>
+      <div class="col-sm-6">{{order.address.state}}</div>
     </div>
     <div class="row">
       <div class="col-sm-3">Zip</div>
-      <div class="col-sm-6">{{confirmation.zip}}</div>
+      <div class="col-sm-6">{{order.address.zip}}</div>
     </div>
     <div class="row">
       <div class="col-sm-3">Phone</div>
-      <div class="col-sm-6">{{confirmation.phone}}</div>
+      <div class="col-sm-6">{{order.address.phone}}</div>
     </div>
     <div class="row">
       <div class="col-sm-3">Email</div>
-      <div class="col-sm-6">{{confirmation.email}}</div>
+      <div class="col-sm-6">{{order.address.email}}</div>
     </div>
   </div>
 </div>
@@ -51,7 +51,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr ng-repeat="bottle in bottles">
+    <tr ng-repeat="bottle in order.items">
       <td> <img src="../../img/{{bottle.shortname}}.png"></td>
       <td>{{bottle.name}}</td>
       <td>{{bottle.qty}}</td>
@@ -63,7 +63,7 @@
     <tr>
       <td colspan="3"></td>
       <th>Total</th>
-      <td>{{total}}</td>
+      <td>{{order.total | currency}}</td>
     </tr>
   </tfooter>
 </table>

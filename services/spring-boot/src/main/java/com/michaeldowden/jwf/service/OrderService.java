@@ -16,6 +16,10 @@ import com.michaeldowden.jwf.web.ResourceNotFoundException;
 @Scope(proxyMode = TARGET_CLASS, value = "session")
 public class OrderService {
 	private Order order = new Order();
+	
+	public void clear() {
+		order = new Order();
+	}
 
 	public void updateShippingAddress(Address address) {
 		order.setAddress(address);
@@ -27,8 +31,6 @@ public class OrderService {
 
 	public Integer checkout(ShoppingCart cart) {
 		Integer orderNumber = buildOrder(order, cart);
-		// Clear current order
-		order = new Order();
 		// Return Order # for lookup
 		return orderNumber;
 	}

@@ -2,42 +2,47 @@
 
 angular.module('bourbon.checkout', ['ngRoute', 'ui.bootstrap'])
 
-  .config(['$routeProvider', function($routeProvider) {
-    $routeProvider.when('/checkout', {
-      templateUrl: 'views/checkout/checkout.html',
-      controller: 'checkoutCtrl'
-    });
-  }])
-
-  .controller('checkoutCtrl', function ($scope, $http, $uibModal) {
-  
-    $scope.bottles = [{
-      id: 1,
-      qty: 1,
-      name: "Booker's Single Barrel Bourbon",
-      price: 41.99,
-      shortname: "bookers"
-    }, {
-      id: 2,
-      qty: 1,
-      name: "Blanton's Original Single Barrel Bourbon Whiskey",
-      price: 49.99,
-      shortname: "blantons"
-    }, {
-      id: 3,
-      qty: 1,
-      name: "Eagle Rare 10 Year Kentucky Straight Bourbon Whiskey",
-      price: 39.99,
-      shortname: "eagle-rare-10yr"
-    }];
-  
-    $scope.$watch('bottles', function() {
-      var total = 0
-      for (var i = 0; i < $scope.bottles.length; i++) {
-        total +=  $scope.bottles[i].price * $scope.bottles[i].qty;
+.config(['$routeProvider', function($routeProvider) {
+  $routeProvider.when('/checkout', {
+    templateUrl: 'views/checkout/checkout.html',
+    controller: 'checkoutCtrl',
+    resolve: {
+      address: function($http) {
+        return $http.get('/svc/order/shipping').then(function(response) {
+          return response.data;
+        });
       }
-      $scope.total = total;
-    },true);
-  })
+    }
+  });
+}])
+
+.controller('checkoutCtrl', function ($scope, $http, address) {
+  var saveAddress = function(address) {
+    console.log(address);
+    return $http.put('/svc/order/shipping', address);
+  };
 
 
+  $scope.form = address;
+
+  $scope.continueShopping = function() {
+    console.log("Continue Shopping");
+    saveAddress($scope.form).then(function() {
+      location.href = '#/store';
+    });
+  };
+
+  $scope.placeOrder = function() {
+    console.log("Place Order");
+    saveAddress($scope.form).then(function() {
+      console.log("Checkout");
+      return $http.post('/svc/order/checkout');
+    }).then(function(response) {
+      console.log("Order Confirmation");
+      console.log(response.data);
+      location.href = '#/confirmation/' + response.data;
+    });
+  };
+  
+})
+;

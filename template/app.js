@@ -12,6 +12,7 @@ angular.module('bourbon', [
 
 ])
 
-  .config(['$routeProvider', function ($routeProvider) {
-    $routeProvider.otherwise({redirectTo: '/store'});
-  }]);
+.config(['$routeProvider', function ($routeProvider) {
+  $routeProvider.otherwise({redirectTo: '/store'});
+}])
+;

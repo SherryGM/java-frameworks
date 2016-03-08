@@ -7,13 +7,12 @@
   <a href="#/cart" class="btn"><i class="fa fa-shopping-cart"></i>View Shopping Cart</a>
 </div>
 <div class="items">
-
   <div class="bottle" ng-repeat="bottle in bottles">
     <img src="../../img/{{bottle.shortname}}.png">
     <div class="group">
       <h2>{{bottle.name}}</h2>
       <button ng-click="open('md', bottle)" class="description"><i class="fa fa-info-circle"></i>Description</button>
-      <p>Price: ${{bottle.price}}</p>
+      <p>Price: {{bottle.price | currency}}</p>
     </div>
     <button class="btn" ng-click="add(bottle.id)">Add to Cart</button>
   </div>
@@ -30,7 +29,7 @@
       <h3>Description</h3>
       <p>{{bottle.description}}</p>
       <h3>Price</h3>
-      <p>{{bottle.price}}</p>
+      <p>{{bottle.price | currency}}</p>
     </div>
   </div>
   <div class="modal-footer">

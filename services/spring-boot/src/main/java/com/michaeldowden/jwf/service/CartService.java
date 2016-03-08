@@ -17,7 +17,12 @@ public class CartService {
 	private ShoppingCart shoppingCart = new ShoppingCart();
 
 	public ShoppingCart fetchCart() {
+		CartUtils.calculateTotal(shoppingCart);
 		return shoppingCart;
+	}
+
+	public void clear() {
+		shoppingCart = new ShoppingCart();
 	}
 
 	public void addToCart(OrderItem newItem) {

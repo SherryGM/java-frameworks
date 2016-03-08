@@ -35,7 +35,10 @@ public class OrderController {
 
 	@RequestMapping(value = "/svc/order/checkout", method = POST)
 	public Integer checkout() {
-		return orderSvc.checkout(cartSvc.fetchCart());
+		Integer orderNumber = orderSvc.checkout(cartSvc.fetchCart());
+		orderSvc.clear();
+		cartSvc.clear();
+		return orderNumber;
 	}
 
 	@RequestMapping("/svc/order/{orderNumber}")

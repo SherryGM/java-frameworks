@@ -26,5 +26,5 @@ http://stackoverflow.com/questions/6097166/how-do-i-read-post-parameters-for-a-r
 
 
 
-4 hours on Dropwizard, JDBI
-1 minutes on Derby, Testing
+5.5 hours on Dropwizard, JDBI
+1 hour on Derby, Testing

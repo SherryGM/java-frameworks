@@ -11,18 +11,19 @@ angular.module('bourbon.store', ['ngRoute', 'ui.bootstrap'])
 
   .controller('storeCtrl', function ($scope, $http, $uibModal) {
   
-    $http.get('../../bourbon.json').success(function (data){
+    $http.get('/svc/items').success(function (data){
       $scope.bottles = data;
     });
 
-    $scope.add = function() {
-      location.href = '#/cart'
+    $scope.add = function(itemId) {
+      $http.put('/svc/cart/'+itemId).then(function() {
+        location.href = '#/cart';
+      });
     };
   
     // Modal
   
     $scope.open = function (size, bottle) {
-      console.log('This button works');
       var modalInstance = $uibModal.open({
         animation: $scope.animationsEnabled,
         templateUrl: 'description',

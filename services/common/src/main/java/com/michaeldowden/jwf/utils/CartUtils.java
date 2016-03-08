@@ -11,7 +11,7 @@ public final class CartUtils {
 	private CartUtils() {
 	}
 
-	private static void calculateTotal(ShoppingCart shoppingCart) {
+	public static void calculateTotal(ShoppingCart shoppingCart) {
 		BigDecimal total = BigDecimal.valueOf(0.0);
 		for (OrderItem item : shoppingCart.getItems()) {
 			BigDecimal subtotal = item.getPrice().multiply(valueOf(item.getQty()));
