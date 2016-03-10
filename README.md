@@ -1,6 +1,8 @@
 # java-frameworks
 This project exists to compare service-layer implementations between Java frameworks. The platform for this comparison is a basic Bourbon shopping cart application written in AngularJS.
 
+Read the Blog post that started this project: https://opensource.com/life/15/10/4-java-web-frameworks
+
 
 ## Service Definition
 
