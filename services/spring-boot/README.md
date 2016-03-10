@@ -30,6 +30,6 @@ http://stackoverflow.com/questions/21123437/how-do-i-use-spring-boot-to-serve-st
 
 
 
-9 hours on Spring Boot
-6 hours on Model, Testing, Derby
+8 hours on Spring Boot
+7 hours on Model, Testing, Derby
 Startup: 3.357 seconds
