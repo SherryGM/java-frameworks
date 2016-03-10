@@ -9,8 +9,8 @@
 body {
   background-image: url('../img/bourbon.svg');
   background-repeat: no-repeat;
-  background-width: 50%;
-  position: bottom left;
+  background-width: 333px;
+  background-position: bottom left;
 }
 h1 {
   border-bottom: solid 1px #e89747;
@@ -74,6 +74,12 @@ button.description:focus,
 button.description:active {
   text-decoration: underline;
   border: none;
+}
+button.shopping {
+  border: none;
+  display: inline;
+  color: #e89747;
+  background: none;
 }
 .items {
   display: flex;
@@ -183,6 +189,9 @@ table img {
   font-weight: bold;
 }
 @media only screen and (max-width: 480px) {
+  body {
+    background-width: 50%;
+  }
   .bottle {
     width: 100%;
   }
@@ -201,7 +210,8 @@ table img {
   .cart {
     display: none;
   }
-  .mobile-links {
+  .mobile-links,
+  button.shoppings {
     display: block;
     position: fixed;
     top: 0;
@@ -212,7 +222,9 @@ table img {
     z-index: 1;
   }
   .mobile-links a:link,
-  .mobile-links a:visited {
+  button.shoppings a:link,
+  .mobile-links a:visited,
+  button.shoppings a:visited {
     color: #5b5b5b;
   }
   h1 {

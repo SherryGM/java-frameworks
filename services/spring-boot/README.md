@@ -28,7 +28,6 @@ Took 45 minutes to figure out how to correctly connect Angular with Spring
  
 http://stackoverflow.com/questions/21123437/how-do-i-use-spring-boot-to-serve-static-content-located-in-dropbox-folder
 
-In the end, Spring can't see the proper POST parameter method
 
 
 9 hours on Spring Boot
