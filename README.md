@@ -3,6 +3,10 @@ This project exists to compare service-layer implementations between Java framew
 
 Read the Blog post that started this project: https://opensource.com/life/15/10/4-java-web-frameworks
 
+See the presentation slideshow: http://www.slideshare.net/MichaelDowden/java-web-app-frameworks
+
+Your input and contributions to this repository are *very welcome*! I would love to see improvements to each of these framework implementations (and to see more implementations added). Just submit a pull request.
+
 
 ## Service Definition
 
